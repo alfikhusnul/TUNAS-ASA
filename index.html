@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <title>TUNAS ASA</title>
+    <!-- Favicon (Logo di tab browser) -->
+     <link rel="shortcut icon" href="logo_warna.png" type="image/x-icon">
+    <!-- CSS -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f7f6; 
+            color: #333;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+        .navigasi {
+            background-color: #254336;
+            width: 100%;
+            position: sticky; 
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navigasi-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 20px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+        .logo-area h2 {
+            margin: 0;
+            font-size: 2.3em; 
+            font-weight: bold;
+        }
+        .menu-navigasi {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .menu-navigasi li {
+            position: relative;
+        }
+        .menu-navigasi li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+        .menu-navigasi li a:hover {
+            background-color: #626F47;
+        }
+        .hero-header {
+            background-image: url('foto.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 40px;
+            text-align: center;
+            align-content: center;
+            color: white;
+            height: 800px;
+        }
+        .hero-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero-header p {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            margin-left: 250px;
+            margin-right: 250px;
+            text-align: justify;
+        }
+        .container-utama {
+            max-width: 1400px;
+            margin: 20px auto 0 auto;
+            background-color: #ffffff;
+        }
+        .area-konten {
+            display: flex;
+            flex-wrap: wrap; 
+        }
+        .main-body {
+            flex: 3; 
+            padding: 25px;
+            min-width: 0;
+        }
+        .sidebar {
+            flex: 1;
+            padding-left: 25px; 
+            background-color: #f9f9f9;
+            border-left: 1px solid #ddd;
+        }
+        .sidebar-widget {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .widget-judul {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #A3B087;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .artikel-postingan {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .artikel-postingan h2 {
+            margin-top: 0;
+            color: #A3B087;
+            font-size: 1.8em;
+        }
+        .artikel-postingan h2 a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+        .artikel-postingan h2 a:hover {
+            color: #A3B087;
+        }
+        .artikel-meta {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .teks-berita {
+            text-align: justify;
+        }
+        .tombol-read-more {
+            display: inline-block;
+            background-color: #626F47;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s;
+        }
+        .tombol-read-more:hover {
+            background-color: #A3B087;
+        }
+        .pilar-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin: 40px 0;
+            gap: 20px;
+            flex-wrap: wrap; 
+        }
+        .pilar-item {
+            flex-basis: 30%;
+            min-width: 250px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .pilar-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .pilar-icon {
+            font-size: 4em;
+            line-height: 1;
+        }
+        .pilar-item h3 {
+            font-size: 1.5em;
+            color: #254336;
+            margin: 15px 0 5px 0;
+        }
+        .sidebar-berita {
+            margin-bottom: 15px;
+        }
+        .sidebar-berita h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1em;
+        }
+        .sidebar-berita h4 a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .sidebar-berita h4 a:hover {
+            text-decoration: underline;
+        }
+        .sidebar-berita p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .tombol-berita-lainnya {
+            display: inline-block; 
+            background-color: #e9ecef; 
+            padding: 8px 12px;
+            margin-top: 15px;
+            color: #555;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+        .tombol-berita-lainnya:hover {
+            text-decoration: underline;
+        }
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .galeri-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .galeri-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+        .galeri-item img:hover {
+            transform: scale(1.05);
+        }
+        .container-formulir {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .grup-formulir {
+            margin-bottom: 20px;
+        }
+        .grup-formulir label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .grup-formulir input[type="text"],
+        .grup-formulir input[type="email"],
+        .grup-formulir input[type="tel"],
+        .grup-formulir select,
+        .grup-formulir textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .tombol-donasi {
+            background-color: #626F47;
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .tombol-donasi:hover {
+            background-color: #A3B087;
+        }
+        .info-kontak {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .info-kontak p {
+            margin: 5px 0;
+        }
+        .footer {
+            background-color: #254336;
+            color: #ecf0f1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .footer a {
+            color: #fdfdfd;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-sosial {
+            margin-top: 30px;
+        }
+        .footer-sosial h4 {
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .footer-sosial a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .footer-sosial a svg {
+            width: 30px; 
+            height: 30px;
+            fill: #ecf0f1; 
+            transition: fill 0.3s;
+        }
+        .footer-sosial a:hover svg {
+            fill: #626F47;
+        }
+        .page-section {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .navigasi-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .menu-navigasi {
+                flex-direction: column;
+                width: 100%;
+            }
+            .menu-navigasi li a {
+                text-align: left;
+                padding-left: 50px;
+            }
+            .logo-area {
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .area-konten {
+                flex-direction: column;
+            }
+            .hero-header h1 {
+                font-size: 2em;
+            }
+            .hero-header p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigasi Header -->
+    <nav class="navigasi">
+        <div class="navigasi-wrapper">
+            <!-- 5. Logo dan Nama Lembaga -->
+            <a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')" class="logo-area">
+                <img src="logo_bnw.png" alt="logo" style="position: sticky; width: 130px;">
+                <h2 >TUNAS ASA</h2>
+            </a>
+            <!-- Menu (di kanan) -->
+            <ul class="menu-navigasi">
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')">Beranda</a></li>
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-about')">Tentang</a></li>
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-program-beasiswa')">Program</a></li>
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-gallery')">Galeri</a></li>
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-contact')">Kontak</a></li>
+                <li><a href="javascript:void(0)" onclick="tampilkanHalaman('page-donasi')">Donasi</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Header 1 -->
+    <header class="hero-header">
+        <h1>Tumbuhkan Harapan, Ciptakan Masa Depan</h1>
+        <p>Kami berdedikasi penuh untuk merawat tunas-tunas bangsa: anak yatim, piatu, dan dhuafa melalui program terpadu di bidang pendidikan, kesejahteraan, dan kemandirian. Kami percaya, setiap tindakan baik adalah benih yang akan menumbuhkan harapan baru, memberdayakan mereka untuk sepenuhnya tumbuh dalam mencapai potensi terbaik untuk membangun masa depan Indonesia.</p>
+    </header>
+    <!-- Pembungkus utama website -->
+    <div class="container-utama">
+        <div class="area-konten">
+            <main class="main-body">
+                <section id="page-home" class="page-section">
+                    <h1>Selamat Datang di Tunas Asa</h1>
+                    <p>Tunas Asa percaya bahwa setiap anak rentan adalah potensi luar biasa yang perlu dirawat. Kami bekerja secara holistik, mengubah kerentanan menjadi kekuatan melalui program beasiswa, pelatihan life skill, dan pembinaan karakter. Mari bersama kami wujudkan perubahan nyata, dari harapan menjadi kemandirian sejati.</p>
+                    <h1>Pilar Utama</h1>
+                    <!-- Tiga Pilar Organisasi -->
+                    <div class="pilar-container">
+                        <div class="pilar-item">
+                            <div class="pilar-icon">🌱</div>
+                            <h3>BERTUMBUH</h3>
+                            <p>Memberikan dukungan penuh terhadap akses pendidikan yang berkualitas.</p>
+                        </div>
+                        <div class="pilar-item">
+                            <div class="pilar-icon">🌳</div>
+                            <h3>BERKEMBANG</h3>
+                            <p>Mengembangkan potensi dan keterampilan untuk masa depan yang mandiri.</p>
+                        </div>
+                        <div class="pilar-item">
+                            <div class="pilar-icon">🌲</div> 
+                            <h3>BERMANFAAT</h3>
+                            <p>Menciptakan dampak positif dan berkontribusi kembali kepada masyarakat.</p>
+                        </div>
+                    </div>
+                    <h1>Kolaborasi & Kemitraan</h1>
+                    <img src="medpart.jpg" alt="Kerja Sama" style="width: 100%;">
+                </section>
+                <!-- Halaman Tentang -->
+                <section id="page-about" class="page-section">
+                    <h1>Tentang Kami</h1>
+                    <h2 id="sejarah">Sejarah</h2>
+                    <p style="text-align: justify;">Tunas Asa didirikan pada tahun 2010 sebagai respons atas tingginya angka anak yatim, piatu, dan dhuafa yang rentan terhadap putus sekolah dan lingkaran kemiskinan. Berangkat dari kesadaran bahwa setiap anak adalah tunas bangsa yang berhak mendapatkan kesempatan terbaik, para pendiri membangun fondasi dengan keyakinan kuat bahwa pendidikan dan pemberdayaan adalah kunci utama. Hal ini melahirkan filosofi Tunas dan Asa—bahwa melalui dukungan yang tepat, setiap anak akan mampu bertumbuh menjadi pribadi yang berkembang, dan pada akhirnya dapat bermanfaat untuk menciptakan masa depan mereka sendiri dan bangsa.</p>
+                    <h2 id="visimisi">Visi & Misi</h2>
+                    <h3>Visi</h3>
+                    <p>"Menjadi organisasi filantropi terdepan dan terpercaya dalam menumbuhkan generasi muda yang cerdas, berkarakter mulia, dan mandiri, sebagai pilar utama pembangun masa depan bangsa."</p>
+                    <h3>Misi</h3>
+                    <ul>
+                        <li>Menjamin akses pendidikan dengan dukungan penuh melalui program beasiswa.</li>
+                        <li>Memastikan kesejahteraan dasar dengan menyediakan kebutuhan pangan, sandang, dan kesehatan yang layak bagi penerima manfaat.</li>
+                        <li>Melaksanakan program life skill dan pengembangan bakat sesuai minat dan kebutuhan industri.</li>
+                        <li>Memberikan pembinaan spiritual dan mental untuk membangun integritas dan kepemimpinan.</li>
+                    </ul>
+                    <h2 id="struktur">Kawasan Jangkauan</h2>
+                    <p>Untuk memastikan bantuan tepat sasaran, organisasi Tunas Asa memiliki cabang operasional di berbagai kawasan di Indonesia:</p>
+                    <ul>
+                        <b><li>Kawasan 1: DKI Jakarta & Banten</li>
+                        <li>Kawasan 2: Jawa Tengah</li>
+                        <li>Kawasan 3: Jawa Timur</li>
+                        <li>Kawasan 4: Jawa Barat</li>
+                        <li>Kawasan 5: Sumatera Utara</li></b>
+                    </ul>
+                </section>
+                <!-- 8. Halaman Program -->
+                <section id="page-program-beasiswa" class="page-section">
+                    <h1>Beasiswa Pendidikan</h1>
+                    <p style="text-align: justify;"><b></b>Beasiswa TUNASA</b> adalah program unggulan Tunas Asa untuk tumbuhkan harapan melalui jalur pendidikan bagi anak yatim, piatu, dan dhuafa di jenjang SMA hingga Perguruan Tinggi. Beasiswa ini tidak hanya menyediakan dukungan finansial untuk biaya pendidikan, tetapi juga disertai dengan pendampingan karakter. Syarat utamanya adalah pendaftar harus memiliki Surat Kematian dna atau Surat Keterangan Tidak Mampu (SKTM), dan bersedia mengikuti program pembinaan. Pendaftaran dilakukan secara online, dilanjutkan dengan seleksi administrasi, wawancara, dan survei lapangan untuk memastikan bantuan disalurkan tepat sasaran. Untuk informasi lebih lanjut silakan cek <a href="#" style="color: #333;">Beasiswa TUNASA</a>.</p>
+                    <h1>Pelatihan <i>Life Skill</i></h1>
+                    <p style="text-align: justify;"><b>Program Pelatihan <i>Life Skill</i></b> bertujuan untuk membekali anak-anak yatim, piatu, dan dhuafa dengan keterampilan dan pembinaan karakter agar siap menghadapi tantangan masa depan. Program ini diselenggarakan melalui modul pelatihan interaktif, workshop, dan sesi mentoring. Tujuannya adalah memastikan setiap penerima manfaat dapat berkembang menjadi individu yang mandiri, bertanggung jawab, dan memiliki kecakapan hidup yang tinggi di luar prestasi akademik.Untuk informasi lebih lanjut silakan cek <a href="#" style="color: #333;">Program Life Skill</a>.</p>
+                    <h1>Proyek Sosial</h1>
+                    <p style="text-align: justify;"><b>Program Proyek Sosial Tunas Berkontribusi</b> yang bertujuan untuk menjadi agen perubahan aktif. Dalam program ini, peserta dibimbing untuk merencanakan, melaksanakan, dan mengevaluasi proyek sosial sederhana yang memberikan dampak nyata di lingkungan sekitar mereka, seperti kampanye kebersihan lingkungan, penggalangan dana kecil untuk warga lansia, atau bimbingan belajar singkat bagi adik-adik di panti. Tujuannya adalah menanamkan rasa tanggung jawab sosial dan kepemimpinan, membuktikan bahwa tunas yang telah Bertumbuh dan Berkembang kini mampu Bermanfaat bagi orang lain, sekaligus melatih kemampuan manajerial praktis mereka. Untuk informasi lebih lanjut silakan cek <a href="#" style="color: #333;">Proyek Sosial Tunas Berkontribusi</a>.</p>
+                </section>
+                <section id="page-program-asah" class="page-section">
+                    <h1>Program: Klub ASAH (Anak Saleh, Aktif, & Hebat)</h1>
+                    <img src="https://placehold.co/800x400/9b59b6/ffffff?text=Klub+ASAH" alt="Klub ASAH" style="width:100%; height:auto; border-radius:8px; margin-bottom:15px;">
+                    <p>Klub ASAH adalah program pengembangan karakter dan keterampilan non-akademik yang kami selenggarakan setiap akhir pekan. Program ini terbuka untuk umum bagi anak-anak di sekitar lingkungan kami.</p>
+                    <p>Kegiatan meliputi:</p>
+                    <ul>
+                        <li>Kelas Menggambar dan Seni</li>
+                        <li>Pelatihan Keterampilan Komputer Dasar</li>
+                        <li>Bimbingan Membaca dan Menulis (Calistung)</li>
+                        <li>Kegiatan Olahraga dan Permainan Tradisional</li>
+                    </ul>
+                </section>
+                <section id="page-program-kunjungan" class="page-section">
+                    <h1>Program: Kunjungan Panti</h1>
+                    <img src="https://placehold.co/800x400/f1c40f/ffffff?text=Kunjungan+Panti" alt="Kunjungan Panti" style="width:100%; height:auto; border-radius:8px; margin-bottom:15px;">
+                    <p>Secara rutin, Yayasan Kasih Bangsa bersama para relawan dan donatur mengadakan kunjungan ke berbagai Panti Asuhan dan Panti Jompo. Kegiatan ini bertujuan untuk berbagi kebahagiaan, memberikan dukungan moril, dan menyalurkan bantuan.</p>
+                    <p>Kami membawa donasi berupa bahan pokok, alat-alat kebersihan, dan juga mengadakan acara hiburan sederhana untuk menghibur para penghuni panti. Kami percaya sentuhan kasih dan perhatian langsung sangat berarti bagi mereka.</p>
+                </section>
+                <!-- Halaman Galeri -->
+                <section id="page-gallery" class="page-section">
+                    <h1>Galeri Kegiatan</h1>
+                    <p>Dokumentasi berbagai program dan kegiatan yang telah kami laksanakan.</p>
+                    <div class="galeri-grid">
+                        <div class="galeri-item">
+                            <img src="https://asset-2.tstatic.net/medan/foto/bank/images/IB-ITB-MENGADAKAN-KUNJUNGAN-KE-PANTI-ASUHAN.jpg" alt="Kunjungan Panti">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://media.licdn.com/dms/image/D5622AQFPNaTSIJV2bA/feedshare-shrink_800/0/1682262315114?e=2147483647&v=beta&t=saZ0DakP2u6DCHKmpeQl9ILDTX9nwCjDNp9e2s0NfxY" alt="Kunjungan Panti">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://www.depok24jam.com/wp-content/uploads/2018/05/panti-asuhan.jpg" alt="Kunjungan Panti">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://is3.cloudhost.id/jakarta/images/image-article/2025-07/30/krom-bank-beri-donasi-dan-perlengkapan-sekolah-di-hari-anak-nasional-2025-foto-688a2042b34df.jpg" alt="Donasi Perlengkapan Sekolah">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://www.newshubasia.com/wp-content/uploads/2024/04/Lynas-Malaysia-Back-to-School-Programme-2024_Sekolah-Kebangsaan-Balok-Makmur_r.jpg" alt="Donasi Perlengkapan Sekolah">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://awsimages.detik.net.id/community/media/visual/2022/06/28/kabar-baru-donasi-siswa-pelosok-ntt-punya-alat-sekolah-baru-hinnga-masker_169.jpeg?w=620" alt="Donasi Perlengkapan Sekolah">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://tse3.mm.bing.net/th/id/OIP.wWB3ho2TgOrPlRUfJBJP_AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Asah Keterampilan">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://th.bing.com/th/id/R.dfabda82910e0c7b52490b0067194d60?rik=l%2bea4rq6Dfc07A&riu=http%3a%2f%2fphotos.projects-abroad.org%2fprojects%2fcare%2fphilippines%2fvolunteer-care-center-philippines.800.jpg&ehk=i0M0CAJjKVQdbnZZk5Kg51rSQg0dm2hEcEnwP0GKAcI%3d&risl=&pid=ImgRaw&r=0" alt="Asah Keterampilan">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://kinerjaekselen.co/wp-content/uploads/2023/10/IMG-20231007-WA0008-e1696866215864.jpg" alt="Asah Keterampilan">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://savethechildren.or.id/wp-content/uploads/2022/10/Pelatihan-Anak-Anak-dan-Orang-Muda-tentang-PSS-Image-2.jpg" alt="Dukungan Psikologis">
+                        </div>
+                        <div class="galeri-item">
+                            <img src="https://www.its.ac.id/sustainability/wp-content/uploads/sites/120/2020/11/sdg4-1.jpg" alt="Dukungan Psikologis">
+                        </div>
+                        <div class="galeri-item">
+                        <img src="https://lazissabilillah.com/wp-content/uploads/2024/07/Wisata-Ceria-2024-scaled-1.jpeg" alt="Dukungan Psikologis">
+                        </div>
+                    </div>
+                </section>
+                <!-- Halaman Donasi -->
+                <section id="page-donasi" class="page-section">
+                    <h1>Formulir Donasi</h1>
+                    <p>Dukungan Anda sangat berarti. Silakan isi formulir di bawah ini untuk memberikan donasi dan menjadi bagian dari perubahan.</p>
+                    <div class="container-formulir">
+                        <form id="form-donasi">
+                            <div class="grup-formulir">
+                                <label for="donasi-nama">Nama Donatur</label>
+                                <input type="text" id="donasi-nama" name="nama" required>
+                            </div>
+                            <div class="grup-formulir">
+                                <label for="donasi-email">Alamat Email</label>
+                                <input type="email" id="donasi-email" name="email" required>
+                            </div>
+                            <div class="grup-formulir">
+                                <label for="donasi-bentuk">Bentuk Donasi</label>
+                                <select id="donasi-bentuk" name="bentuk" required>
+                                    <option value="">-- Pilih Bentuk Donasi --</option>
+                                    <option value="uang">Uang</option>
+                                    <option value="buku">Perlengkapan Sekolah</option>
+                                    <option value="pakaian">Pakaian Layak Pakai</option>
+                                    <option value="makanan">Makanan dan atau Minuman</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="grup-formulir">
+                                <label for="donasi-jumlah">Jumlah / Keterangan</label>
+                                <input type="text" id="donasi-jumlah" name="jumlah" placeholder="Contoh: Rp 100.000 / 10 buku / 1 kardus" required>
+                            </div>
+                            <button type="submit" class="tombol-donasi">BERI ASA</button>
+                        </form>
+                    </div>
+                </section>
+                <!-- Halaman Kontak -->
+                <section id="page-contact" class="page-section">
+                    <h1>Hubungi Kami</h1>
+                    <p>Kami senang terhubung dengan Anda. Silakan gunakan informasi di bawah ini untuk terhubung dengan kami.</p>
+                    <div class="info-kontak">
+                        <p><strong>Alamat:</strong><br> Jl. Kebaikan No. 123, Jakarta Tengah, Indonesia 10110</p>
+                        <p><strong>Email:</strong><br> <a href="mailto:info@tunasa.org">info@tunasa.org</a></p>
+                        <p><strong>Telepon:</strong><br> <a href="tel:+62211234567">(021) 123-4567</a></p>
+                        <p><strong>Jam Operasional:</strong><br> Senin - Jumat: 08.00 - 17.00 WIB</p>
+                    </div>
+                    <hr style="margin: 30px 0;">
+                    <h2>Pertanyaan yang Sering Diajukan</h2>
+                    <p><b>Bagaimana saya dapat menjadi relawan dalam acara yang diselenggarakan Tunas Asa?</b></p>
+                    <p>Anda dapat menjadi relawan dengan mengikuti terus akun media sosial resmi kami dalam Instagram dan Facebook. Setiap kali ada kegiatan yang membutuhkan relawan, kami akan menyebarkan <i>flyer</i> dan tautan pendaftaran di postingan tersebut.</p>
+                    <p><b>Apakah organisasi ini terdaftar secara hukum dan dapat dipercaya?</b></p>
+                    <p>Ya, Tunas Asa adalah organisasi nirlaba yang terdaftar secara resmi di Kementerian Hukum dan HAM dengan SK No. GTW-12345.67.89.</p>
+                    <p><b>Apakah menerima donasi dan bagaimana cara melakukannya?</b></p>
+                    <p>Ya, kami menerima donasi dalam bentuk uang, perlengkapan sekolah, pakaian layak pakai, makanan dan atau minuman, dan bentuk lainnya. Anda dapat mengisi formulir donasi di dalam menu Donasi.</p>
+                    <p><b>Bagaimana dana yang saya donasikan dapat disalurkan?</b></p>
+                    <p>Dana Anda disalurkan melalui 3 pilar program utama kami: BERTUMBUH (Pendidikan & Kesejahteraan), BERKEMBANG (Pelatihan Keterampilan), dan BERMANFAAT (Kemandirian). Kami berkomitmen menjaga transparansi dengan alokasi 80% untuk program dan 20% untuk operasional. Laporan detail akan tersedia dalam enam bulan sekali melalui unggahan berita</p>
+                    <p><b>Siapa saja penerima manfaat dari Tunas Asa?</b></p>
+                    <p>Fokus utama kami adalah anak yatim, piatu, dan dhuafa. Kami juga memberdayakan keluarga prasejahtera dan masyarakat di sekitar mereka agar tercipta ekosistem yang mendukung tumbuh dan berkembangnya anak-anak.</p>
+                </section>
+                <!-- Halaman Artikel Lengkap (tersembunyi) -->
+                <section id="page-artikel-1" class="page-section">
+                    <h1>Tunas Asa Buka Beasiswa TUNASA Tahap II 2025</h1>
+                    <p class="artikel-meta">Diposting pada 6 Juni 2025 oleh Admin</p>
+                    <img src="https://static.republika.co.id/uploads/images/inpicture_slide/muhammad-faittullah-akbar-penerima-beasiswa-prestasi-pembiayaan-kuliah-dari_210602213041-971.jpg" alt="Bantuan Pangan Lansia" style="width:100%; height:auto; border-radius:8px; margin-bottom:15px;">
+                    <p><b>Jakarta, 6 Juni 2025</b> - Organisasi Tunas Asa kembali menunjukkan komitmennya dalam memerangi putus sekolah akibat kendala biaya. Hari ini telah resmi diumumkan pembukaan pendaftaran Program Beasiswa TUNASA Tahap II untuk tahun ajaran 2025. Program ini menargetkan ratusan anak yatim, piatu, dan dhuafa di jenjang SMA hingga mahasiswa S1 yang membutuhkan dukungan finansial dan pendampingan karakter.</p>
+                    <p>Pendaftaran Beasiswa TUNASA Tahap II dibuka mulai 6 Juni hingga 19 Juni 2025 secara daring melalui laman resminya. Program ini merupakan implementasi nyata dari pilar BERTUMBUH organisasi, yang fokus pada penjaminan akses pendidikan berkualitas. Dukungan yang diberikan mencakup bantuan biaya sekolah atau Uang Kuliah Tunggal (UKT) dan uang saku hingga mencapai Rp 5.000.000 per tahun, bertujuan agar para penerima manfaat dapat berfokus penuh pada studi mereka tanpa terhalang biaya.</p>
+                    <p>Bapak Fulan, selaku Ketua Tunas Asa, menjelaskan bahwa beasiswa ini tidak hanya menyasar aspek akademik. <i>"Kami tidak hanya mencari siswa dengan nilai tinggi, tetapi juga mereka yang memiliki semangat juang dan komitmen kuat untuk Berkembang. Oleh karena itu, selain syarat administratif seperti SKTM dan rata-rata nilai minimal, calon penerima juga wajib mengikuti sesi wawancara dan pembinaan karakter dari kami,"</i> ujarnya. Program ini akan memprioritaskan penyaluran di seluruh kawasan jangkuan, di mana angka kemiskinan dan kebutuhan pendidikan tergolong tinggi.</p>
+                    <p>Selain dukungan finansial, seluruh penerima beasiswa otomatis diikutsertakan dalam program pengembangan diri seperti Pelatihan Life Skill dan Mentor Karakter. Hal ini sejalan dengan misi Tunas Asa untuk menghasilkan lulusan yang tidak hanya cerdas tetapi juga terampil dan berdaya, sehingga kelak dapat Bermanfaat bagi masyarakat luas.</p>
+                    <p><i>"Kami ingin beasiswa ini menjadi modal awal bagi mereka untuk ciptakan masa depan yang mandiri, sebagimana tujuan dari organisasi kami,"</i> tambah Fulan.</p>
+                    <p>Masyarakat yang ingin mendukung program Beasiswa TUNASA ini atau mengetahui detail persyaratan dan alur pendaftaran dapat mengakses informasi lengkap di laman resmi atau melalui akun media sosial resmi. Donasi dan dukungan masyarakat sangat diharapkan untuk memperluas jangkauan beasiswa ini di tahun mendatang.</p>
+                    <br>
+                    <a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')" class="tombol-read-more">&laquo; Kembali ke Beranda</a>
+                </section>
+                <section id="page-artikel-2" class="page-section">
+                    <h1>Seni Kreatif TUNASA, Perkuat Karakter dan Ekspresi Diri Anak</h1>
+                    <p class="artikel-meta">Diposting pada 10 Agustus 2025 oleh Admin</p>
+                    <img src="https://th.bing.com/th/id/R.645f12ec2ac6c9cfe60f802f7733f504?rik=mjMPrQsMBQY99A&riu=http%3a%2f%2ffip.unj.ac.id%2fpls%2fwp-content%2fuploads%2f2023%2f06%2fPlay-for-hope1.jpg&ehk=DVqXpZZQ6evi1%2baXwmB%2fLAmqcjfdy%2bZZ%2fdsjligOu8w%3d&risl=&pid=ImgRaw&r=0" alt="Seni Kreatif TUNASA" style="width:100%; height:auto; border-radius:8px; margin-bottom:15px;">
+                    <p class="teks-berita"><b>Jakarta, 10 Agustus 2025</b> - Organisasi Tunas Asa sukses menyelenggarakan "Kelas Seni Kreatif" yang penuh keceriaan bagi puluhan anak yatim dan dhuafa di Kalideres, Jakarta Barat. Kegiatan ini merupakan bagian dari pilar BERKEMBANG yang fokus pada penguatan potensi dan karakter di luar akademik.</p>
+                    <p class="teks-berita">Kelas seni ini merupakan salah satu modul dari Program Pelatihan Life Skill, di mana anak-anak tidak hanya diajarkan keterampilan bertahan hidup, tetapi juga pentingnya kecerdasan emosional dan sosial. Fulanah, Koordinator Mentor Kreatif, menjelaskan bahwa seni adalah media terapi yang efektif untuk membangun rasa percaya diri dan kecerdasan emosional anak.</p>
+                    <p class="teks-berita">Fulanah menjelaskan bahwa kegiatan ini memiliki dampak psikologis yang signifikan. <i>"Seni adalah media terapi dan ekspresi yang luar biasa. Anak-anak yang mungkin menyimpan beban emosional dapat menyalurkannya lewat warna,"</i> tuturnya.</p>
+                    <p class="teks-berita">Keberhasilan acara ini didukung penuh oleh semangat para penerima Beasiswa TUNASA yang secara konsisten menyumbangkan waktu dan keahlian mereka. Keterlibatan mereka membuktikan visi organisasi untuk menghasilkan generasi muda yang tidak hanya cerdas tetapi juga berkarakter kuat.</p>
+                    <br>
+                    <a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')" class="tombol-read-more">&laquo; Kembali ke Home</a>
+                </section>
+                <section id="page-artikel-3" class="page-section">
+                    <h1>Bekal Masa Depan, Penerima Beasiswa TUNASA Ikuti Seminar Literasi Keuangan</h1>
+                    <p class="artikel-meta">Diposting pada 6 November 2025 oleh Admin</p>
+                    <img src="https://th.bing.com/th/id/OIP.a1K8GrkshegAEZCez3BUUwHaEK?w=298&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Seminar" style="width:100%; height:auto; border-radius:8px; margin-bottom:15px;">
+                    <p class="teks-berita"><b>Ternate, 6 November 2025</b> - Organisasi Tunas Asa menguatkan bekal para penerima Beasiswa TUNASA tingkat SMA/SMK/Sederajat melalui seminar intensif Literasi Keuangan Dasar. Kegiatan ini merupakan bagian krusial dari Program Pelatihan Life Skill, yang bertujuan mempersiapkan remaja yatim dan dhuafa agar cakap dalam mengelola finansial dan siap menghadapi kemandirian di masa depan.</p>
+                    <p class="teks-berita">Seminar yang diselenggarakan di Aula Hotel Aum Kota Ternate ini diikuti oleh 200 siswa penerima beasiswa. Fokus materi adalah pengenalan konsep menabung, pengelolaan anggaran sederhana, serta menghindari jebakan utang konsumtif. Kegiatan ini menegaskan komitmen Tunasa Asa dalam pilar BERKEMBANG, yaitu memberikan keterampilan praktis yang mendukung pertumbuhan karakter dan kemandirian, melampaui dukungan biaya pendidikan formal.</p>
+                    <p class="teks-berita">Heri selaku Koordinator Kawasan Jangkauan Maluku Utara, menyampaikan pentingnya literasi keuangan bagi anak-anak yang berada dalam situasi ekonomi sulit. <i>"Literasi keuangan adalah keterampilan life skill yang paling fundamental. Dengan bekal ini, mereka tidak hanya tahu cara mencari uang di masa depan, tetapi juga tahu cara mengelolanya agar dana beasiswa yang diterima benar-benar menjadi modal untuk Tumbuhkan Harapan, bukan sekadar habis untuk kebutuhan sesaat,"</i> jelasnya.</p>
+                    <p class="teks-berita">Seminar ini difasilitasi oleh Filantropi Indonesia, yang memberikan contoh kasus realistis dan sesi interaktif mengenai perbedaan antara kebutuhan dan keinginan. Para siswa SMA terlihat antusias belajar menyusun anggaran bulanan dan merencanakan target tabungan kecil.</p>
+                    <p class="teks-berita">Tunas Asa berkomitmen untuk terus menghadirkan pelatihan yang mendalam demi kemandirian penerima manfaat. Mari bersama-sama Ciptakan Masa Depan yang berdaya bagi Tunas Harapan bangsa.</p>
+                    <br>
+                    <a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')" class="tombol-read-more">&laquo; Kembali ke Beranda</a>
+                </section>
+            </main>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-judul">Video Profil</h3>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TqhNILVX8IE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 class="widget-judul">Statistik</h3>
+                    <ul style="list-style-type: '📊'; padding-left: 20px;">
+                        <li><strong>5000</strong> Penerima Manfaat</li>
+                        <li><strong>200</strong> Donatur Tetap</li>
+                        <li><strong>9</strong> Kawasan</li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget">
+                    <h3 class="widget-judul">Berita Terbaru</h3>
+                    <div class="sidebar-berita">
+                        <h4><a href="javascript:void(0)" onclick="tampilkanHalaman('page-artikel-1')">Tunas Asa Buka Beasiswa TUNASA Tahap II 2025</a></h4>
+                        <p>Jakarta, 6 Juni 2025 - Organisasi Tunas Asa kembali menunjukkan ...</p>
+                    </div>
+                    <div class="sidebar-berita">
+                        <h4><a href="javascript:void(0)" onclick="tampilkanHalaman('page-artikel-2')">Seni Kreatif TUNASA, Perkuat Karakter dan Ekspresi Diri Anak</a></h4>
+                        <p>Jakarta, 10 Agustus 2025 - Organisasi Tunas Asa sukses ...</p>
+                    </div>
+                    <div class="sidebar-berita">
+                        <h4><a href="javascript:void(0)" onclick="tampilkanHalaman('page-artikel-3')">Penerima Beasiswa TUNASA Ikuti Seminar Literasi Keuangan</a></h4>
+                        <p>Ternate, 6 November 2025 - Organisasi Tunas Asa menguatkan bekal para penerima Beasiswa ...</p>
+                    </div>
+                    <span class="tombol-berita-lainnya">Berita Lainnya ...</span>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2025 Tunas Asa | Semua Hak Dilindungi</p>
+        <p>Desain oleh | Alfi Khusnul Fauziah</p>
+        <p>
+            <a href="javascript:void(0)" onclick="tampilkanHalaman('page-home')">Beranda</a> | 
+            <a href="javascript:void(0)" onclick="tampilkanHalaman('page-about')">Tentang</a> | 
+            <a href="javascript:void(0)" onclick="tampilkanHalaman('page-contact')">Kontak</a>
+        </p>
+        <!-- Footer Sosial Media -->
+        <div class="footer-sosial">
+            <h4>IKUTI KAMI</h4>
+            <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.2 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.42 19.12-40.42 39.58V256h68.75l-11 71.69h-57.75V501C413.31 482.38 504 379.78 504 256z"/></svg>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M549.65 124.13c-6.28-23.65-24.78-42.17-48.4-48.4-42.58-12.1-218.04-12.1-218.04-12.1s-175.46 0-218.04 12.1C41.04 81.96 22.54 100.48 16.26 124.13-1.01 168.43 0 256 0 256s1.01 87.57 16.26 131.87c6.28 23.65 24.78 42.17 48.4 48.4 42.58 12.1 218.04 12.1 218.04 12.1s175.46 0 218.04-12.1c23.62-6.28 42.12-24.78 48.4-48.4 17.27-44.3 16.26-131.87 16.26-131.87s1.01-87.57-16.26-131.87zM231.8 358.18V153.82L384.9 256 231.8 358.18z"/></svg>
+            </a>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        function tampilkanHalaman(idHalaman, idAnchor) {
+            var semuaHalaman = document.querySelectorAll('.page-section');
+            semuaHalaman.forEach(function(halaman) {
+                halaman.style.display = 'none';
+            });
+            var halamanAktif = document.getElementById(idHalaman);
+            if (halamanAktif) {
+                halamanAktif.style.display = 'block';
+            } else {
+                document.getElementById('page-home').style.display = 'block';
+            }
+            if (idAnchor) {
+                var elemenAnchor = document.querySelector(idAnchor);
+                if (elemenAnchor) {
+                    elemenAnchor.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            tampilkanHalaman('page-home');
+        });
+        document.getElementById('form-donasi').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            alert('Setiap donasi yang Anda berikan adalah bekal bagi mereka yang membutuhkan. Terima kasih telah menjadi bagian dari perjalanan kami dalam menumbuhkan asa.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
